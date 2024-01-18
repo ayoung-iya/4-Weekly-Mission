@@ -1,5 +1,9 @@
 @import url("../style.css");
 
+body {
+  background: var(--color-gray-200);
+}
+
 .container {
   margin: 0 3.2rem;
 }
