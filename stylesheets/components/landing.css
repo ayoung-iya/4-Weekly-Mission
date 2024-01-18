@@ -1,6 +1,6 @@
 @import url("../style.css");
 
-header {
+.header-area {
   position: sticky;
   top: 0;
   left: 0;
@@ -9,7 +9,7 @@ header {
   z-index: 100;
 }
 
-.header-area {
+.header-group {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -18,16 +18,16 @@ header {
   max-width: 1920px;
 }
 
-.header-area .logo-area {
+.logo-area {
   display: flex;
 }
 
-.header-area .logo-img {
+.logo-img {
   width: 13.3rem;
   height: 2.4rem;
 }
 
-.header-area .btn {
+.header-group .btn {
   flex-shrink: 0;
   width: 12.8rem;
 }
@@ -102,7 +102,7 @@ header {
   letter-spacing: -0.03rem;
 }
 
-.section-area .desc {
+.desc {
   grid-area: desc;
   line-height: 1.5;
   font-size: 1.6rem;
@@ -111,7 +111,7 @@ header {
   white-space: pre-line;
 }
 
-.section-area .function-screen {
+.function-screen {
   grid-area: image;
   height: 45rem;
 }
@@ -151,11 +151,11 @@ header {
   -webkit-text-fill-color: transparent;
 }
 
-footer {
+.footer-area {
   background-color: var(--color-black);
 }
 
-.footer-area {
+.footer-group {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -182,14 +182,14 @@ footer {
   gap: 1.2rem;
 }
 
-.link-list a,
-.sns-list a {
+.link-item,
+.sns-item{
   display: flex;
   line-height: 1;
 }
 
 @media (max-width: 1199px) {
-  .header-area {
+  .header-group {
     padding: 2rem 3.2rem;
     max-width: 80rem;
   }
@@ -211,7 +211,7 @@ footer {
   .article-area {
     margin: 8rem 0 17rem;
   }
-  
+
   .section-area {
     gap: 0 5.1rem;
   }
@@ -232,27 +232,27 @@ footer {
       "image ."/38.5rem 28rem;
   }
 
-  .section-area .desc {
+  .desc {
     white-space: normal;
     word-break: keep-all;
   }
-  
-  .section-area .function-screen {
+
+  .function-screen {
     height: 31.5rem;
   }
 }
 
 @media (max-width: 767px) {
-  .header-area {
+  .header-group {
     padding: 1.3rem 3.2rem;
   }
 
-  .header-area .logo-img {
+  .logo-img {
     width: 8.867rem;
     height: 1.6rem;
   }
 
-  .header-area .btn {
+  .header-group .btn {
     width: 8rem;
     height: 3.7rem;
     line-height: 3.7rem;
@@ -302,18 +302,18 @@ footer {
     font-size: 2.4rem;
   }
 
-  .section-area .desc {
+  .desc {
     font-size: 1.5rem;
     line-height: 2.3rem;
   }
 
-  .section-area .function-screen {
+  .function-screen {
     margin: 2rem 0 1.6rem;
     width: 100%;
     height: auto;
   }
 
-  .footer-area {
+  .footer-group {
     flex-wrap: wrap;
     gap: 6rem 0;
     padding: 3.2rem;
