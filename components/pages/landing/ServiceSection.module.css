@@ -1,0 +1,134 @@
+.sectionArea {
+  display: grid;
+  gap: 0 15.7rem;
+}
+
+.sectionArea:nth-of-type(odd) {
+  grid-template:
+    '. image'
+    'title image'
+    'desc image'
+    '. image' / 30.2rem 55rem;
+}
+
+.sectionArea:nth-of-type(even) {
+  grid-template:
+    'image .'
+    'image title'
+    'image desc'
+    'image .'/55rem 30.2rem;
+}
+
+.title {
+  grid-area: title;
+  margin-bottom: 1rem;
+  line-height: 5.8rem;
+  font-size: 4.8rem;
+  font-weight: 700;
+  letter-spacing: -0.03rem;
+}
+
+.desc {
+  grid-area: desc;
+  line-height: 1.5;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--color-gray-800);
+  white-space: pre-line;
+}
+
+.functionScreen {
+  grid-area: image;
+  height: 45rem;
+}
+
+.pink-to-blue {
+  background: linear-gradient(96deg, #fe8a8a 1.72%, #a4ceff 74.97%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.yellow-to-blue {
+  background: linear-gradient(277deg, #6fbaff 0%, #ffd88b 93.66%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.blue-to-gray {
+  background: linear-gradient(99deg, #6d7ccd 60%, rgba(82, 136, 133, 0.22) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.blue-to-blue {
+  background: linear-gradient(271deg, #fe578f -150%, #68e8f9 110%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@media (max-width: 1199px) {
+  .articleArea {
+    margin: 8rem 0 17rem;
+  }
+
+  .sectionArea {
+    gap: 0 5.1rem;
+  }
+
+  .sectionArea:nth-of-type(odd) {
+    grid-template:
+      '. image'
+      'title image'
+      'desc image'
+      '. image' / 28rem 38.5rem;
+  }
+
+  .sectionArea:nth-of-type(even) {
+    grid-template:
+      'image .'
+      'image title'
+      'image desc'
+      'image .'/38.5rem 28rem;
+  }
+
+  .desc {
+    white-space: normal;
+    word-break: keep-all;
+  }
+
+  .functionScreen {
+    height: 31.5rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .sectionArea:nth-of-type(n) {
+    grid-template:
+      'title'
+      'image'
+      'desc'/100%;
+    gap: 0;
+    padding: 4rem 3.2rem;
+  }
+
+  .title {
+    margin-bottom: 0;
+    line-height: 2.9rem;
+    font-size: 2.4rem;
+  }
+
+  .desc {
+    font-size: 1.5rem;
+    line-height: 2.3rem;
+  }
+
+  .functionScreen {
+    margin: 2rem 0 1.6rem;
+    width: 100%;
+    height: auto;
+  }
+}
