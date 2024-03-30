@@ -15,8 +15,11 @@ async function getAPI(query: string) {
   return body;
 }
 
-export function getSampleFolder() {
-  return getAPI('sample/folder');
+export async function getSampleFolder() {
+  const response =  await getAPI('sample/folder');
+  const folders = response.folder;
+
+  return folders;
 }
 
 export function getSampleUser() {
