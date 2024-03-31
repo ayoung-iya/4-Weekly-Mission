@@ -1,17 +1,16 @@
 import { useState } from 'react';
 import FolderListArea from './FolderListArea';
 import LinkList from './LinkList';
-import { totalFolderId } from '../../../util/constants';
-import { FolderId } from '../../../types/types';
+import { totalFolderId } from '@/util/constants';
 
 interface FolderArea {
   searchString: string;
 }
 
 const FolderArea = ({ searchString }: FolderArea) => {
-  const [selectedFolderId, setSelectedFolderId] = useState<FolderId>(totalFolderId);
+  const [selectedFolderId, setSelectedFolderId] = useState(totalFolderId);
 
-  const handleFolderNameClick = (id: FolderId) => {
+  const handleFolderNameClick = (id: string) => {
     setSelectedFolderId(id);
   };
 

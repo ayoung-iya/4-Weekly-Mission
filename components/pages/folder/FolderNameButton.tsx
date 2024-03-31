@@ -1,8 +1,7 @@
 import styled from 'styled-components';
-import { FolderId } from '../../../types/types';
 import { ReactNode } from 'react';
 
-const Button = styled.button<{$active?: boolean}>`
+const Button = styled.button<{ $active?: boolean }>`
   display: flex;
   align-items: center;
   padding: 0.8rem 1.2rem;
@@ -22,9 +21,9 @@ const Button = styled.button<{$active?: boolean}>`
 `;
 
 interface FolderNameButtonProp {
-  id: FolderId;
-  selectedFolderId: FolderId;
-  onFolderNameClick: (id: FolderId) => void;
+  id: string;
+  selectedFolderId: string;
+  onFolderNameClick: (id: string) => void;
   children: ReactNode;
 }
 

@@ -40,7 +40,7 @@ const UpdateButton = styled.button`
 `;
 
 interface UpdateBtnListProps {
-  selectedFolderId: FolderId;
+  selectedFolderId: string;
   selectedFolderName: string;
 }
 

@@ -13,14 +13,14 @@ export interface FolderAPI {
 }
 
 export interface Folder {
-  id: number;
+  id: string;
   createdAt: string;
   name: string;
   userId: number;
   favorite: boolean;
   link: {
     count: number;
-  }
+  };
 }
 
 export interface LinkAPI {
@@ -35,7 +35,7 @@ export interface LinkAPI {
 }
 
 export interface Link {
-  id: number;
+  id: string;
   createdAt: string;
   updatedAt: string;
   url: string;
@@ -46,12 +46,10 @@ export interface Link {
 }
 
 export interface User {
-  id: number;
+  id: string;
   createAt: string;
   name: string;
   imageSource: string;
   email: string;
   authId: string;
 }
-
-export type FolderId = string | number;

@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { useContext } from 'react';
 import { createPortal } from 'react-dom';
 import FolderNameButton from './FolderNameButton';
-import { Folder, FolderId } from '@/types/types';
 import { FoldersContext } from '@/context/createContext.';
 import { useOpenModal } from '@/hooks/modal';
 import { modalTypes, totalFolderId, totalFolderName } from '@/util/constants';
@@ -65,8 +64,8 @@ const Button = styled.button`
 `;
 
 interface FolderListAreaProps {
-  selectedFolderId: FolderId;
-  onFolderNameClick: (id: FolderId) => void;
+  selectedFolderId: string;
+  onFolderNameClick: (id: string) => void;
 }
 
 const FolderListArea = ({ selectedFolderId, onFolderNameClick }: FolderListAreaProps) => {

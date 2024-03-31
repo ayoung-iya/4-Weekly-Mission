@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { useContext, useEffect, useState } from 'react';
 import UpdateBtnList from './UpdateBtnList';
-import { Folder, FolderId, Link } from '@/types/types';
+import { Folder, Link } from '@/types/types';
 import { totalFolderName } from '@/util/constants';
 import { FoldersContext, LinkListContext } from '@/context/createContext.';
 import { getUserLinks } from '@/api/api';
@@ -32,13 +32,13 @@ const Title = styled.h1`
   }
 `;
 
-const selectFolderName = (folders: Folder[], selectedFolderId: FolderId) => {
+const selectFolderName = (folders: Folder[], selectedFolderId: string) => {
   const selectedFolder = folders.filter(folder => folder.id === selectedFolderId)[0];
   return selectedFolder?.name || totalFolderName;
 };
 
 interface LinkListProps {
-  selectedFolderId: FolderId;
+  selectedFolderId: string;
   searchString: string;
 }
 
@@ -49,7 +49,7 @@ const LinkList = ({ selectedFolderId, searchString }: LinkListProps) => {
   const selectedFolderName = selectFolderName(folders, selectedFolderId);
 
   useEffect(() => {
-    const fetchLinks = async (id: FolderId) => {
+    const fetchLinks = async (id: string) => {
       try {
         const links = await getUserLinks(id);
         setLinks(links);

@@ -4,12 +4,11 @@ import Frame from './frame/Frame';
 import Title from './title/Title';
 import styles from './Share.module.css';
 import ShareBtn from './shareBtn/ShareBtn';
-import { FolderId } from '@/types/types';
 import { sampleUrl } from '@/util/constants';
 import { useKaKaoScript } from '@/hooks/kakao';
 
 interface ShareProps {
-  selectedFolderId: FolderId;
+  selectedFolderId: string;
   onCloseModal: () => void;
   selectedFolderName: string;
 }

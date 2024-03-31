@@ -16,7 +16,7 @@ async function getAPI(query: string) {
 }
 
 export async function getSampleFolder() {
-  const response =  await getAPI('sample/folder');
+  const response = await getAPI('sample/folder');
   const folders = response.folder;
 
   return folders;
@@ -27,17 +27,18 @@ export function getSampleUser() {
 }
 
 export async function getUser(): Promise<User> {
-  const response = await getAPI(`users/${USER_ID}`);
+  const response = await getAPI('users/1');
   const data = response.data[0];
 
-  const parsedData = { ...data, imageSource: data['image_source'], authId: data['auth_id'] };
+  const parsedData = { ...data, id: String(data.id), imageSource: data['image_source'], authId: data['auth_id'] };
   return parsedData;
 }
 
 export async function getUserFolders(): Promise<Folder[]> {
   const response = await getAPI(`users/4/folders`);
-  const parsedData = response.data.map(({ created_at, user_id, ...rest }: FolderAPI) => ({
+  const parsedData = response.data.map(({ id, created_at, user_id, ...rest }: FolderAPI) => ({
     ...rest,
+    id: String(id),
     createdAt: created_at,
     userId: user_id,
   }));
@@ -49,8 +50,9 @@ export async function getUserLinks(id: number | string): Promise<Link[]> {
   const query = id === totalFolderId ? `users/${USER_ID}/links` : `users/${USER_ID}/links?folderId=${id}`;
   const response = await getAPI(query);
 
-  const parsedData = response.data.map(({ created_at, image_source, ...rest }: LinkAPI) => ({
+  const parsedData = response.data.map(({ id, created_at, image_source, ...rest }: LinkAPI) => ({
     ...rest,
+    id: String(id),
     createdAt: created_at,
     imageSource: image_source,
   }));
