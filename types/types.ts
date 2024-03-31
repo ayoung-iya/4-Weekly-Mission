@@ -23,7 +23,7 @@ export interface Folder {
   };
 }
 
-export interface LinkAPI {
+export interface LinkAPITypes {
   id: number;
   created_at: string;
   updated_at: string;
@@ -34,7 +34,7 @@ export interface LinkAPI {
   folder_id: null;
 }
 
-export interface Link {
+export interface LinkTypes {
   id: string;
   createdAt: string;
   updatedAt: string;

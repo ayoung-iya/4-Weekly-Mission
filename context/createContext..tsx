@@ -1,6 +1,6 @@
 import { createContext } from 'react';
-import { Folder, Link } from '@/types/types';
+import { Folder, LinkTypes } from '@/types/types';
 
 export const FoldersContext = createContext<Folder[]>([]);
 
-export const LinkListContext = createContext<Link[]>([]);
+export const LinkListContext = createContext<LinkTypes[]>([]);

@@ -1,6 +1,6 @@
 import { PropsWithChildren, createContext, useEffect, useState } from 'react';
 import { getSampleFolder } from '@/api/api';
-import { Link } from '@/types/types';
+import { LinkTypes } from '@/types/types';
 
 interface SampleFolderContext {
   folderName: string;
@@ -9,7 +9,7 @@ interface SampleFolderContext {
     name: string;
     profileImageSource: string;
   };
-  folderLinks: Link[];
+  folderLinks: LinkTypes[];
 }
 
 const ownerDefault = {
@@ -29,7 +29,7 @@ export const sampleFolderContext = createContext<SampleFolderContext>(contextDef
 const SampleFolderProvider = ({ children }: PropsWithChildren) => {
   const [folderName, setFolderName] = useState('');
   const [owner, setOwner] = useState(ownerDefault);
-  const [folderLinks, setFolderLinks] = useState<Link[]>([]);
+  const [folderLinks, setFolderLinks] = useState<LinkTypes[]>([]);
 
   useEffect(() => {
     const fetchSampleFolder = async () => {

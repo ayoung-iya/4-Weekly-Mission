@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import LinkCard from './LinkCard';
 import { useContext, useEffect, useState } from 'react';
-import { Link } from '@/types/types';
+import { LinkTypes } from '@/types/types';
 import { LinkListContext } from '@/context/createContext.';
 
 const List = styled.ul`
@@ -28,7 +28,7 @@ interface FolderListProps {
 
 const FolderList = ({ searchString }: FolderListProps) => {
   const folderLinks = useContext(LinkListContext);
-  const [selectedFolderLinks, setSelectedFolderLinks] = useState<Link[]>(folderLinks);
+  const [selectedFolderLinks, setSelectedFolderLinks] = useState<LinkTypes[]>(folderLinks);
 
   useEffect(() => {
     const timerId = setTimeout(() => {

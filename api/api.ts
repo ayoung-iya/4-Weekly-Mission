@@ -1,5 +1,5 @@
 import { USER_ID, totalFolderId } from '@/util/constants';
-import { Folder, FolderAPI, Link, LinkAPI, User } from '@/types/types';
+import { Folder, FolderAPI, LinkTypes, LinkAPITypes, User } from '@/types/types';
 
 const BASE_URL = 'https://bootcamp-api.codeit.kr/api';
 
@@ -46,11 +46,11 @@ export async function getUserFolders(): Promise<Folder[]> {
   return parsedData;
 }
 
-export async function getUserLinks(id: number | string): Promise<Link[]> {
+export async function getUserLinks(id: number | string): Promise<LinkTypes[]> {
   const query = id === totalFolderId ? `users/${USER_ID}/links` : `users/${USER_ID}/links?folderId=${id}`;
   const response = await getAPI(query);
 
-  const parsedData = response.data.map(({ id, created_at, image_source, ...rest }: LinkAPI) => ({
+  const parsedData = response.data.map(({ id, created_at, image_source, ...rest }: LinkAPITypes) => ({
     ...rest,
     id: String(id),
     createdAt: created_at,

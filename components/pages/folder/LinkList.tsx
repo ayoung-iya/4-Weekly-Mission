@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { useContext, useEffect, useState } from 'react';
 import UpdateBtnList from './UpdateBtnList';
-import { Folder, Link } from '@/types/types';
+import { Folder, LinkTypes } from '@/types/types';
 import { totalFolderName } from '@/util/constants';
 import { FoldersContext, LinkListContext } from '@/context/createContext.';
 import { getUserLinks } from '@/api/api';
@@ -44,7 +44,7 @@ interface LinkListProps {
 
 const LinkList = ({ selectedFolderId, searchString }: LinkListProps) => {
   const folders = useContext(FoldersContext);
-  const [links, setLinks] = useState<Link[]>([]);
+  const [links, setLinks] = useState<LinkTypes[]>([]);
 
   const selectedFolderName = selectFolderName(folders, selectedFolderId);
 

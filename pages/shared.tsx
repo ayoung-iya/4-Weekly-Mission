@@ -2,7 +2,7 @@ import UserFolderNameArea from '@/components/pages/shared/UserFolderNameArea';
 import SharedSection from '@/components/pages/shared/SharedSection';
 import { createContext, useEffect, useState } from 'react';
 import { getSampleFolder } from '@/api/api';
-import { Link } from '@/types/types';
+import { LinkTypes } from '@/types/types';
 import { LinkListContext } from '@/context/createContext.';
 
 const ownerDefault = {
@@ -16,7 +16,7 @@ export const OwnerContext = createContext({ folderName: '', owner: ownerDefault 
 export default function Shared() {
   const [folderName, setFolderName] = useState('');
   const [owner, setOwner] = useState(ownerDefault);
-  const [folderLinks, setFolderLists] = useState<Link[]>([]);
+  const [folderLinks, setFolderLists] = useState<LinkTypes[]>([]);
 
   useEffect(() => {
     const fetchSampleFolder = async () => {
