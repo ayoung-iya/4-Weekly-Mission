@@ -9,7 +9,7 @@ interface FrameProps {
 
 const Frame = ({ children, onCloseModal }: PropsWithChildren<FrameProps>) => {
   const handleCloseModal = (e: MouseEvent) => {
-    // TODO: 제네릭으로 HTMLDivElement 해봤으나 id에서 에러가 뜬다.
+
     if (e.target instanceof HTMLDivElement || e.target instanceof HTMLButtonElement) {
       if (e.target.id === modalBackground || e.target.id === exitBtnId) {
         onCloseModal();
