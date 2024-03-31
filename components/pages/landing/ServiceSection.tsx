@@ -11,7 +11,7 @@ const ServiceSection = ({ title, highlight, description, image, gradient }: Serv
       <h1 className={styles.title}>{title}</h1>
       <p className={styles.desc}>{description}</p>
       <div className={styles.functionScreen}>
-        <Image fill src={image} alt={highlight} style={{objectFit: 'contain'}}/>
+        <Image fill src={image} alt={highlight} style={{ objectFit: 'contain' }} />
       </div>
     </section>
   );

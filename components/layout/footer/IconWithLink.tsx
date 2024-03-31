@@ -11,7 +11,7 @@ const IconWithLink = ({ name, address, imgUrl }: FooterItem) => {
   return (
     <li className={className}>
       <Link href={address} target={target} rel={rel} className={styles.center}>
-        {imgUrl ? <Image src={imgUrl} alt={name} width={20} height={18}/> : `${name}`}
+        {imgUrl ? <Image src={imgUrl} alt={name} width={20} height={18} /> : `${name}`}
       </Link>
     </li>
   );

@@ -9,7 +9,6 @@ interface FrameProps {
 
 const Frame = ({ children, onCloseModal }: PropsWithChildren<FrameProps>) => {
   const handleCloseModal = (e: MouseEvent) => {
-
     if (e.target instanceof HTMLDivElement || e.target instanceof HTMLButtonElement) {
       if (e.target.id === modalBackground || e.target.id === exitBtnId) {
         onCloseModal();
