@@ -1,10 +1,11 @@
+import { Modal } from '@/types/types';
 import Frame from './frame/Frame';
 import SubmitButton from './submitButton/SubmitButton';
 import Title from './title/Title';
 
 interface DeleteLinkProps {
   link: string;
-  onCloseModal: () => void;
+  onCloseModal: Modal['closeModal'];
 }
 
 const DeleteLink = ({ link, onCloseModal }: DeleteLinkProps) => (

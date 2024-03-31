@@ -4,10 +4,11 @@ import Title from './title/Title';
 import SubmitButton from './submitButton/SubmitButton';
 import styles from './Add.module.css';
 import { FoldersContext } from '@/context/createContext.';
+import { Modal } from '@/types/types';
 
 interface AddProps {
   link: string;
-  onCloseModal: () => void;
+  onCloseModal: Modal['closeModal'];
 }
 
 const Add = ({ link, onCloseModal }: AddProps) => {

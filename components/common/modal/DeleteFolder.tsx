@@ -1,10 +1,11 @@
 import Title from './title/Title';
 import Frame from './frame/Frame';
 import SubmitButton from './submitButton/SubmitButton';
+import { Modal } from '@/types/types';
 
 interface DeleteFolder {
   selectedFolderName: string;
-  onCloseModal: () => void;
+  onCloseModal: Modal['closeModal'];
 }
 
 const DeleteFolder = ({ selectedFolderName, onCloseModal }: DeleteFolder) => (

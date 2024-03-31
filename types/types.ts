@@ -53,3 +53,9 @@ export interface User {
   email: string;
   authId: string;
 }
+
+export interface Modal {
+  isOpenModal: boolean;
+  openModal: () => void;
+  closeModal: () => void;
+}

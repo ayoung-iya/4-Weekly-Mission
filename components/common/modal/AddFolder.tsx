@@ -1,9 +1,14 @@
+import { Modal } from '@/types/types';
 import FolderNameInput from './folderNameInput/folderNameInput';
 import Frame from './frame/Frame';
 import SubmitButton from './submitButton/SubmitButton';
 import Title from './title/Title';
 
-const AddFolder = ({ onCloseModal }: { onCloseModal: () => void }) => (
+interface AddFolderProps {
+  onCloseModal: Modal['closeModal'];
+}
+
+const AddFolder = ({ onCloseModal }: AddFolderProps) => (
   <Frame onCloseModal={onCloseModal}>
     <Title title="폴더 추가" />
     <FolderNameInput />

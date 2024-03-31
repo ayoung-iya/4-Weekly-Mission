@@ -1,3 +1,4 @@
+import { Modal } from '@/types/types';
 import FolderNameInput from './folderNameInput/folderNameInput';
 import Frame from './frame/Frame';
 import SubmitButton from './submitButton/SubmitButton';
@@ -5,7 +6,7 @@ import Title from './title/Title';
 
 interface EditProps {
   selectedFolderName: string;
-  onCloseModal: () => void;
+  onCloseModal: Modal['closeModal'];
 }
 
 const Edit = ({ selectedFolderName = '', onCloseModal }: EditProps) => (
