@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 export default function Home() {
   return (
-    <Layout>
+    <>
       <main className={styles.main}>
         <h1 className={styles.title}>
           <span className={styles.gradient}>세상의 모든 정보</span>를 <br />
@@ -23,6 +23,6 @@ export default function Home() {
           <ServiceSection key={service.id} {...service} />
         ))}
       </article>
-    </Layout>
+    </>
   );
 }

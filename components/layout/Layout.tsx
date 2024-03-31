@@ -5,11 +5,11 @@ import { PropsWithChildren } from 'react';
 
 function Layout({ children }: PropsWithChildren) {
   return (
-    <UserProvider>
+    <>
       <Header />
       {children}
       <Footer />
-    </UserProvider>
+    </>
   );
 }
 
