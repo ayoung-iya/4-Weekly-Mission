@@ -1,6 +1,11 @@
 import styles from './Title.module.css';
 
-const Title = ({ title, content }: { title: string; content?: string }) => (
+interface TitleProps {
+  title: string;
+  content?: string;
+}
+
+const Title = ({ title, content }: TitleProps) => (
   <header className={styles.titleArea}>
     <h1 className={styles.title}>{title}</h1>
     {content && <h2 className={styles.folderName}>{content}</h2>}
