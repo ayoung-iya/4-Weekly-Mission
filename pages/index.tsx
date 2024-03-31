@@ -1,5 +1,4 @@
 import styles from '@/styles/landing.module.css';
-import Layout from '@/components/layout/Layout';
 import { MAIN_SERVICES } from '@/constants/mainServices';
 import ServiceSection from '@/components/pages/landing/ServiceSection';
 import Link from 'next/link';
