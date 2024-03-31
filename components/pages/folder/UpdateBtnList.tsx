@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import { MouseEvent, useState } from 'react';
-import { modalTypes } from '../../../util/constants';
-import Share from '../../common/modal/Share';
-import Edit from '../../common/modal/Edit';
-import DeleteFolder from '../../common/modal/DeleteFolder';
-import { FolderId } from '../../../types/types';
+import { useOpenModal } from '@/hooks/modal';
+import { modalTypes } from '@/util/constants';
+import Share from '@/components/common/modal/Share';
+import Edit from '@/components/common/modal/Edit';
+import DeleteFolder from '@/components/common/modal/DeleteFolder';
 import Image from 'next/image';
 
 const ButtonList = [

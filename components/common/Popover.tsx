@@ -1,6 +1,6 @@
 import { useState, MouseEvent } from 'react';
 import { createPortal } from 'react-dom';
-import { modalTypes } from '../../util/constants';
+import { modalTypes } from '@/util/constants';
 import styles from './Popover.module.css';
 import DeleteLink from './modal/DeleteLink';
 import Add from './modal/Add';

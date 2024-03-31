@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import SubHeader from '../../common/SubHeader';
+import SubHeader from '@/components/common/SubHeader';
 import { useContext } from 'react';
 import { OwnerContext } from '@/pages/shared';
 import Image from 'next/image';
