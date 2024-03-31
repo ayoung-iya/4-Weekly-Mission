@@ -7,7 +7,7 @@ interface ShareBtnProps {
   backgroundColor?: string;
 }
 
-const ShareBtn = ({ name, imgUrl, backgroundColor = '' }: ShareBtnProps) => (
+const ShareBtn = ({ name, imgUrl, backgroundColor }: ShareBtnProps) => (
   <div className={styles.btnShare}>
     <div className={`${styles.icon} ${backgroundColor ? styles[backgroundColor] : ''}`}>
       <Image width={18} height={18} src={imgUrl} alt={`${name} 로고`} />
