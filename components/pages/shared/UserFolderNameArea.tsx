@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import SubHeader from '../../common/SubHeader';
 import { useContext } from 'react';
 import { sampleFolderContext } from '@/context/sampleFolderContext';
+import { OwnerContext } from '@/pages/shared';
 
 const ImageProfile = styled.img`
   margin: 2rem 0 1.2rem;
@@ -42,7 +43,7 @@ const FolderName = styled.h1`
 `;
 
 function UserFolderNameArea() {
-  const { folderName, owner } = useContext(sampleFolderContext);
+  const { folderName, owner } = useContext(OwnerContext);
 
   return (
     <SubHeader>

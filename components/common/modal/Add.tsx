@@ -3,7 +3,7 @@ import Frame from './frame/Frame';
 import Title from './title/Title';
 import SubmitButton from './submitButton/SubmitButton';
 import styles from './Add.module.css';
-import { FoldersContext } from '@/context/foldersContext.';
+import { FoldersContext } from '@/context/createContext.';
 
 const Add = ({ link, onCloseModal }: { link: string; onCloseModal: () => void }) => {
   const folders = useContext(FoldersContext);
