@@ -70,9 +70,8 @@ const LinkInfo = ({ url, createdAt, description }: LinkInfoProps) => {
   const handlePopoverClick = (e: MouseEvent) => {
     e.preventDefault();
 
-    // TODO: eventTarget에 dataset 속성이 없다라고 뜬다.
-    if (!(e.target instanceof HTMLButtonElement)) return;
-    if (!(e.target.dataset.modal === modalTypes.deleteLink || e.target.dataset.modal === modalTypes.add)) return;
+    const target = e.target as HTMLButtonElement;
+    if (!(target.dataset.modal === modalTypes.deleteLink || target.dataset.modal === modalTypes.add)) return;
     setShowPopover(false);
   };
 
