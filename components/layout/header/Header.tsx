@@ -14,11 +14,11 @@ function Header() {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const currentUser = await getUser();
-
-        setUser(currentUser);
+        const user = await getUser();
+        setUser(user);
       } catch (err) {
-        console.error(err);
+        const error = err as Error;
+        console.error(error.message);
       }
     };
 
