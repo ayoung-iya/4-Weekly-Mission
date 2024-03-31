@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { User } from '@/types/types';
 import { getUser } from '@/api/api';
+import Image from 'next/image';
 
 function Header() {
   const [user, setUser] = useState<User | null>(null);
@@ -28,12 +29,12 @@ function Header() {
     <header className={`${styles.headerArea} ${headerPosition}`}>
       <div className={styles.headerGroup}>
         <Link href="/" className={styles.logoArea}>
-          <img src="/icons/linkbrary-logo.svg" alt="로고" className={styles.logoImg} />
+          <Image fill src="/icons/linkbrary-logo.svg" alt="로고" className={styles.logoImg} />
         </Link>
         <button className={styles.btnGroup}>
           {user ? (
             <>
-              <img src={user.imageSource} alt="프로필 사진" className={styles.userProfile} />
+              <Image src={user.imageSource} alt="프로필 사진" width={28} height={28} className={styles.userProfile} />
               <span className={styles.userEmail}>{user.email}</span>
             </>
           ) : (
