@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import TextInput from './TextInput';
-import { ChangeEvent } from 'react';
+import { ChangeEventHandler } from 'react';
 import Image from 'next/image';
 
 const InputGroup = styled.div`
@@ -56,26 +56,33 @@ const CloseButton = styled.button`
 
 interface SearchBarProps {
   searchString: string;
-  onChangeSearchString: (e: ChangeEvent<HTMLInputElement>) => void;
-  onResetSearchString: () => void;
+  handleChangeSearchString: ChangeEventHandler<HTMLInputElement>;
+  handleResetSearchString: () => void;
 }
 
-const SearchBar = ({ searchString, onChangeSearchString, onResetSearchString }: SearchBarProps) => (
-  <>
-    <InputGroup>
-      <TextInput type="text" value={searchString} onChange={onChangeSearchString} placeholder="링크를 검색해 보세요" />
+const SearchBar = ({ searchString, handleChangeSearchString, handleResetSearchString }: SearchBarProps) => {
+  return (
+    <>
+      <InputGroup>
+        <TextInput
+          type="text"
+          value={searchString}
+          onChange={handleChangeSearchString}
+          placeholder="링크를 검색해 보세요"
+        />
+        {searchString !== '' && (
+          <CloseButton onClick={handleResetSearchString}>
+            <Image fill src="/icons/close.png" alt="검색어 초기화" />
+          </CloseButton>
+        )}
+      </InputGroup>
       {searchString !== '' && (
-        <CloseButton onClick={onResetSearchString}>
-          <Image fill src="/icons/close.png" alt="검색어 초기화" />
-        </CloseButton>
+        <SearchMessage>
+          <BoldString>{searchString}</BoldString>으로 검색한 결과입니다.
+        </SearchMessage>
       )}
-    </InputGroup>
-    {searchString !== '' && (
-      <SearchMessage>
-        <BoldString>{searchString}</BoldString>으로 검색한 결과입니다.
-      </SearchMessage>
-    )}
-  </>
-);
+    </>
+  );
+};
 
 export default SearchBar;

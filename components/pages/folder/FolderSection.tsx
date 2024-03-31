@@ -10,16 +10,12 @@ const MainArea = styled.main`
 `;
 
 const FolderSection = () => {
-  const { searchString, handleChangeSearchString, handleResetSearchString } = useSearch('');
+  const search = useSearch('');
 
   return (
     <MainArea>
-      <SearchBar
-        searchString={searchString}
-        onChangeSearchString={handleChangeSearchString}
-        onResetSearchString={handleResetSearchString}
-      />
-      <FolderArea searchString={searchString} />
+      <SearchBar {...search} />
+      <FolderArea searchString={search.searchString} />
     </MainArea>
   );
 };
