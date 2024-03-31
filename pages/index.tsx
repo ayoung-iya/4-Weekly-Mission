@@ -3,6 +3,7 @@ import Layout from '@/components/layout/Layout';
 import { MAIN_SERVICES } from '@/constants/mainServices';
 import ServiceSection from '@/components/pages/landing/ServiceSection';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Home() {
   return (
@@ -15,7 +16,9 @@ export default function Home() {
         <Link href="/signup" className={styles.button}>
           링크 추가하기
         </Link>
-        <img src="/images/screen.png" alt="홈페이지 예시 화면" className={styles.screen} />
+        <div className={styles.screen}>
+          <Image fill src="/images/screen.png" alt="홈페이지 예시 화면" />
+        </div>
       </main>
 
       <article className={styles.articleArea}>

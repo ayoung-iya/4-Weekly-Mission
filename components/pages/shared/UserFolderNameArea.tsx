@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 import SubHeader from '../../common/SubHeader';
 import { useContext } from 'react';
-import { sampleFolderContext } from '@/context/sampleFolderContext';
 import { OwnerContext } from '@/pages/shared';
+import Image from 'next/image';
 
-const ImageProfile = styled.img`
+const ImageProfile = styled.div`
+  position: relative;
   margin: 2rem 0 1.2rem;
   width: 6rem;
   height: 6rem;
@@ -47,7 +48,9 @@ function UserFolderNameArea() {
 
   return (
     <SubHeader>
-      <ImageProfile src={owner.profileImageSource} alt="프로필 사진" />
+      <ImageProfile>
+        <Image fill src={owner.profileImageSource} alt="프로필 사진" />
+      </ImageProfile>
       <UserName>{owner.name}</UserName>
       <FolderName>{folderName}</FolderName>
     </SubHeader>

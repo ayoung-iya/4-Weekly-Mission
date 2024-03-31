@@ -5,7 +5,7 @@ import Share from '../../common/modal/Share';
 import Edit from '../../common/modal/Edit';
 import DeleteFolder from '../../common/modal/DeleteFolder';
 import { FolderId } from '../../../types/types';
-import { useOpenModal } from '../../../hooks/modal';
+import Image from 'next/image';
 
 const ButtonList = [
   {
@@ -39,11 +39,6 @@ const UpdateButton = styled.button`
   color: var(--color-gray-600);
 `;
 
-const ButtonImg = styled.img`
-  width: 1.8rem;
-  height: 1.8rem;
-`;
-
 interface UpdateBtnListProps {
   selectedFolderId: FolderId;
   selectedFolderName: string;
@@ -74,7 +69,7 @@ const UpdateBtnList = ({ selectedFolderId, selectedFolderName }: UpdateBtnListPr
         {ButtonList.map(({ modalName, name, imgUrl }) => (
           <li key={name}>
             <UpdateButton data-modal={modalTypes[modalName]} onClick={handleBtnClick}>
-              <ButtonImg src={imgUrl} alt={name} />
+              <Image width={18} height={18} src={imgUrl} alt={name} />
               {name}
             </UpdateButton>
           </li>

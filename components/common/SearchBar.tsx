@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import TextInput from './TextInput';
 import { ChangeEvent } from 'react';
+import Image from 'next/image';
 
 const InputGroup = styled.div`
   display: flex;
@@ -48,6 +49,7 @@ const BoldString = styled.b`
 `;
 
 const CloseButton = styled.button`
+  position: relative;
   width: 2.4rem;
   height: 2.4rem;
 `;
@@ -64,7 +66,7 @@ const SearchBar = ({ searchString, onChangeSearchString, onResetSearchString }: 
       <TextInput type="text" value={searchString} onChange={onChangeSearchString} placeholder="링크를 검색해 보세요" />
       {searchString !== '' && (
         <CloseButton onClick={onResetSearchString}>
-          <img src="/icons/close.png" />
+          <Image fill src="/icons/close.png" alt="검색어 초기화" />
         </CloseButton>
       )}
     </InputGroup>

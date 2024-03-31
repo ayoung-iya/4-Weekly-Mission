@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import styles from './ShareBtn.module.css';
 
 interface ShareBtnProps {
@@ -9,7 +10,7 @@ interface ShareBtnProps {
 const ShareBtn = ({ name, imgUrl, backgroundColor = '' }: ShareBtnProps) => (
   <div className={styles.btnShare}>
     <div className={`${styles.icon} ${backgroundColor ? styles[backgroundColor] : ''}`}>
-      <img src={imgUrl} alt={`${name} 로고`} className={styles.img} />
+      <Image width={18} height={18} src={imgUrl} alt={`${name} 로고`} />
     </div>
     <span className={styles.name}>{name}</span>
   </div>
