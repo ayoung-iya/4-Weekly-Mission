@@ -3,6 +3,7 @@ import { format, formatDistanceToNowStrict } from 'date-fns';
 import { useState, MouseEvent } from 'react';
 import { modalTypes } from '../../util/constants';
 import Popover from './Popover';
+import { LinkTypes } from '@/types/types';
 
 export const InfoGroup = styled.div`
   display: flex;
@@ -54,11 +55,7 @@ const Date = styled.p`
   color: #333;
 `;
 
-interface LinkInfoProps {
-  url: string;
-  createdAt: string;
-  description: string;
-}
+type LinkInfoProps = Pick<LinkTypes, 'url' | 'createdAt' | 'description'>;
 
 const LinkInfo = ({ url, createdAt, description }: LinkInfoProps) => {
   const elapsedTime = formatDistanceToNowStrict(createdAt);
