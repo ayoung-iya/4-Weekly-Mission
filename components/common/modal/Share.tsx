@@ -3,9 +3,6 @@ import { useEffect } from 'react';
 import Frame from './frame/Frame';
 import Title from './title/Title';
 import styles from './Share.module.css';
-import kakaoUrl from '../../../assets/kakao.svg';
-import facebookUrl from '../../../assets/facebook.svg';
-import linkUrl from '../../../assets/link.svg';
 import ShareBtn from './shareBtn/ShareBtn';
 import { FolderId } from '@/types/types';
 import { sampleUrl } from '@/util/constants';
@@ -40,14 +37,14 @@ const Share = ({ selectedFolderId, onCloseModal, selectedFolderName }: ShareProp
       <Title title="폴더 공유" content={selectedFolderName} />
       <ul className={styles.btnList}>
         <button onClick={handleKaKaoButton}>
-          <ShareBtn name="카카오톡" imgUrl={kakaoUrl} backgroundColor="yellow" />
+          <ShareBtn name="카카오톡" imgUrl="/icons/kakao.svg" backgroundColor="yellow" />
         </button>
         <button onClick={() => window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`)}>
-          <ShareBtn name="페이스북" imgUrl={facebookUrl} backgroundColor="blue" />
+          <ShareBtn name="페이스북" imgUrl="/icons/facebook.svg" backgroundColor="blue" />
         </button>
         <CopyToClipboard text={url}>
           <button>
-            <ShareBtn name="링크 복사" imgUrl={linkUrl} />
+            <ShareBtn name="링크 복사" imgUrl="/icons/link.svg" />
           </button>
         </CopyToClipboard>
       </ul>
