@@ -40,11 +40,11 @@ const UpdateButton = styled.button`
 `;
 
 interface UpdateBtnListProps {
-  selectedFolderId: string;
+  currentId: string;
   selectedFolderName: string;
 }
 
-const UpdateBtnList = ({ selectedFolderId, selectedFolderName }: UpdateBtnListProps) => {
+const UpdateBtnList = ({ currentId, selectedFolderName }: UpdateBtnListProps) => {
   const [activeModal, setActiveModal] = useState('');
   const { isOpenModal, openModal, closeModal } = useOpenModal(false);
 
@@ -76,11 +76,7 @@ const UpdateBtnList = ({ selectedFolderId, selectedFolderName }: UpdateBtnListPr
         ))}
       </UpdateButtonList>
       {isOpenModal && activeModal === modalTypes.share && (
-        <Share
-          selectedFolderId={selectedFolderId}
-          selectedFolderName={selectedFolderName}
-          onCloseModal={handleCloseModal}
-        />
+        <Share currentId={currentId} selectedFolderName={selectedFolderName} onCloseModal={handleCloseModal} />
       )}
       {isOpenModal && activeModal === modalTypes.edit && (
         <Edit onCloseModal={handleCloseModal} selectedFolderName={selectedFolderName} />

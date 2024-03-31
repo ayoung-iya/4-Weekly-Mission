@@ -6,6 +6,7 @@ import { FoldersContext } from '@/context/createContext.';
 import { useOpenModal } from '@/hooks/modal';
 import { modalTypes, totalFolderId, totalFolderName } from '@/util/constants';
 import AddFolder from '@/components/common/modal/AddFolder';
+import { useRouter } from 'next/router';
 
 const FolderGroup = styled.div`
   display: flex;
@@ -63,29 +64,23 @@ const Button = styled.button`
   }
 `;
 
-interface FolderListAreaProps {
-  selectedFolderId: string;
-  onFolderNameClick: (id: string) => void;
-}
-
-const FolderListArea = ({ selectedFolderId, onFolderNameClick }: FolderListAreaProps) => {
+const FolderListArea = () => {
   const folderList = useContext(FoldersContext);
   const { isOpenModal, openModal, closeModal } = useOpenModal(false);
+  const { query } = useRouter();
+  const currentId = (query.id as string) || totalFolderId;
 
   return (
     <FolderGroup>
       <FolderList>
         <li>
-          <FolderNameButton
-            id={totalFolderId}
-            selectedFolderId={selectedFolderId}
-            onFolderNameClick={onFolderNameClick}>
+          <FolderNameButton id={totalFolderId} currentId={currentId}>
             {totalFolderName}
           </FolderNameButton>
         </li>
         {folderList.map(({ id, name }) => (
           <li key={id}>
-            <FolderNameButton id={id} selectedFolderId={selectedFolderId} onFolderNameClick={onFolderNameClick}>
+            <FolderNameButton id={id} currentId={currentId}>
               {name}
             </FolderNameButton>
           </li>

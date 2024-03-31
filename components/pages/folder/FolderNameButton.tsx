@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import { ReactNode } from 'react';
+import Link from 'next/link';
+import { totalFolderId } from '@/util/constants';
 
 const Button = styled.button<{ $active?: boolean }>`
   display: flex;
@@ -22,22 +24,17 @@ const Button = styled.button<{ $active?: boolean }>`
 
 interface FolderNameButtonProp {
   id: string;
-  selectedFolderId: string;
-  onFolderNameClick: (id: string) => void;
-  children: ReactNode;
+  currentId: string;
+  children?: ReactNode;
 }
 
-const FolderNameButton = ({ id, selectedFolderId, onFolderNameClick, children }: FolderNameButtonProp) => {
-  const handleBtnClick = () => {
-    onFolderNameClick(id);
-  };
+const FolderNameButton = ({ id, currentId, children }: FolderNameButtonProp) => {
+  const linkHref = id === totalFolderId ? '/folder' : `/folder/${id}`;
 
-  return id === selectedFolderId ? (
-    <Button $active onClick={handleBtnClick}>
-      {children}
+  return (
+    <Button $active={id === currentId}>
+      <Link href={linkHref}>{children}</Link>
     </Button>
-  ) : (
-    <Button onClick={handleBtnClick}>{children}</Button>
   );
 };
 export default FolderNameButton;

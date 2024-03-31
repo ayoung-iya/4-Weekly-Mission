@@ -9,13 +9,13 @@ import { useKaKaoScript } from '@/hooks/kakao';
 import { Modal } from '@/types/types';
 
 interface ShareProps {
-  selectedFolderId: string;
+  currentId: string;
   onCloseModal: Modal['closeModal'];
   selectedFolderName: string;
 }
 
-const Share = ({ selectedFolderId, onCloseModal, selectedFolderName }: ShareProps) => {
-  const url = `${sampleUrl}${selectedFolderId}`;
+const Share = ({ currentId, onCloseModal, selectedFolderName }: ShareProps) => {
+  const url = `${sampleUrl}${currentId}`;
   const status = useKaKaoScript('https://developers.kakao.com/sdk/js/kakao.js');
 
   useEffect(() => {

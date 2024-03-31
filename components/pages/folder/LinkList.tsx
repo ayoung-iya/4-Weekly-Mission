@@ -2,10 +2,10 @@ import styled from 'styled-components';
 import { useContext, useEffect, useState } from 'react';
 import UpdateBtnList from './UpdateBtnList';
 import { Folder, LinkTypes } from '@/types/types';
-import { totalFolderName } from '@/util/constants';
+import { totalFolderId, totalFolderName } from '@/util/constants';
 import { FoldersContext, LinkListContext } from '@/context/createContext.';
-import { getUserLinks } from '@/api/api';
 import FolderList from '@/components/common/FolderList';
+import { useRouter } from 'next/router';
 
 const Header = styled.header`
   display: flex;
@@ -38,39 +38,25 @@ const selectFolderName = (folders: Folder[], selectedFolderId: string) => {
 };
 
 interface LinkListProps {
-  selectedFolderId: string;
   searchString: string;
 }
 
-const LinkList = ({ selectedFolderId, searchString }: LinkListProps) => {
+const LinkList = ({ searchString }: LinkListProps) => {
   const folders = useContext(FoldersContext);
-  const [links, setLinks] = useState<LinkTypes[]>([]);
-
-  const selectedFolderName = selectFolderName(folders, selectedFolderId);
-
-  useEffect(() => {
-    const fetchLinks = async (id: string) => {
-      try {
-        const links = await getUserLinks(id);
-        setLinks(links);
-      } catch (err) {
-        console.error(err);
-      }
-    };
-
-    fetchLinks(selectedFolderId);
-  }, [selectedFolderId]);
+  const { query } = useRouter();
+  const currentId = (query.id as string) || totalFolderId;
+  const selectedFolderName = selectFolderName(folders, currentId);
 
   return (
-    <LinkListContext.Provider value={links}>
+    <>
       <Header>
         <Title>{selectedFolderName}</Title>
         {selectedFolderName !== totalFolderName && (
-          <UpdateBtnList selectedFolderId={selectedFolderId} selectedFolderName={selectedFolderName} />
+          <UpdateBtnList currentId={currentId} selectedFolderName={selectedFolderName} />
         )}
       </Header>
       <FolderList searchString={searchString} />
-    </LinkListContext.Provider>
+    </>
   );
 };
 export default LinkList;
