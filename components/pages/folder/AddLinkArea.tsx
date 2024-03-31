@@ -1,11 +1,11 @@
 import styled from 'styled-components';
-import { ChangeEvent, useState } from 'react';
 import { createPortal } from 'react-dom';
 import SubHeader from '@/components/common/SubHeader';
 import TextInput from '@/components/common/TextInput';
 import { modalTypes } from '@/util/constants';
 import Add from '@/components/common/modal/Add';
 import { useOpenModal } from '@/hooks/modal';
+import { useSearch } from '@/hooks/search';
 
 const InputGroup = styled.div`
   display: flex;
@@ -55,26 +55,27 @@ const Button = styled.button`
 
 const AddLinkArea = () => {
   const { isOpenModal, openModal, closeModal } = useOpenModal(false);
-  const [linkString, setLinkString] = useState('');
-
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setLinkString(e.target.value);
-  };
+  const { searchString, handleChangeSearchString } = useSearch('');
 
   const handleBtnClick = () => {
-    if (linkString.trim() === '') return;
+    if (searchString.trim() === '') return;
     openModal();
   };
 
   return (
     <SubHeader>
       <InputGroup>
-        <TextInput type="text" placeholder="링크를 추가해 보세요" value={linkString} onChange={handleInputChange} />
+        <TextInput
+          type="text"
+          placeholder="링크를 추가해 보세요"
+          value={searchString}
+          onChange={handleChangeSearchString}
+        />
         <Button data-modal={modalTypes.add} onClick={handleBtnClick}>
           추가하기
         </Button>
       </InputGroup>
-      {isOpenModal && createPortal(<Add link={linkString} onCloseModal={closeModal} />, document.body)}
+      {isOpenModal && createPortal(<Add link={searchString} onCloseModal={closeModal} />, document.body)}
     </SubHeader>
   );
 };
