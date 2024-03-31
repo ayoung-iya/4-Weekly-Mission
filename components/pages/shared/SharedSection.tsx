@@ -18,16 +18,12 @@ const SharedArea = styled.section`
 `;
 
 const SharedSection = () => {
-  const { searchString, handleChangeSearchString, handleResetSearchString } = useSearch('');
+  const search = useSearch('');
 
   return (
     <SharedArea>
-      <SearchBar
-        searchString={searchString}
-        onChangeSearchString={handleChangeSearchString}
-        onResetSearchString={handleResetSearchString}
-      />
-      <FolderList searchString={searchString} />
+      <SearchBar {...search} />
+      <FolderList searchString={search.searchString} />
     </SharedArea>
   );
 };
