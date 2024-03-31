@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import FolderList from './FolderList';
+import FolderList from '../../common/FolderList';
 import SearchBar from '@/components/common/SearchBar';
 import { useSearch } from '@/hooks/search';
 

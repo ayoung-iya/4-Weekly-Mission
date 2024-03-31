@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import LinkCard from '../../common/LinkCard';
+import LinkCard from './LinkCard';
 import { useContext, useEffect, useState } from 'react';
-import { sampleFolderContext } from '@/context/sampleFolderContext';
 import { Link } from '@/types/types';
+import { LinkListContext } from '@/context/createContext.';
 
 const List = styled.ul`
   display: flex;
@@ -27,7 +27,7 @@ interface FolderListProps {
 }
 
 const FolderList = ({ searchString }: FolderListProps) => {
-  const { folderLinks } = useContext(sampleFolderContext);
+  const folderLinks = useContext(LinkListContext);
   const [selectedFolderLinks, setSelectedFolderLinks] = useState<Link[]>(folderLinks);
 
   useEffect(() => {
@@ -35,8 +35,8 @@ const FolderList = ({ searchString }: FolderListProps) => {
       const newFolderLinks = folderLinks.filter(
         links =>
           links.url.toLowerCase().includes(searchString.toLowerCase()) ||
-          links.title.toLowerCase().includes(searchString.toLowerCase()) ||
-          links.description.toLowerCase().includes(searchString.toLowerCase())
+          links.title?.toLowerCase().includes(searchString.toLowerCase()) ||
+          links.description?.toLowerCase().includes(searchString.toLowerCase())
       );
 
       setSelectedFolderLinks(newFolderLinks);
