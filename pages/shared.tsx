@@ -5,6 +5,15 @@ import { getSampleFolder } from '@/api/api';
 import { LinkTypes } from '@/types/types';
 import { LinkListContext } from '@/context/createContext.';
 
+export async function getStaticProps() {
+  const res = await getSampleFolder();
+  const folderName = res.name;
+  const owner = res.owner;
+  const folderLinks = res.links;
+
+  return { props: { folderName, owner, folderLinks } };
+}
+
 const ownerDefault = {
   id: 0,
   name: '',
@@ -13,23 +22,17 @@ const ownerDefault = {
 
 export const OwnerContext = createContext({ folderName: '', owner: ownerDefault });
 
-export default function Shared() {
-  const [folderName, setFolderName] = useState('');
-  const [owner, setOwner] = useState(ownerDefault);
-  const [folderLinks, setFolderLists] = useState<LinkTypes[]>([]);
+interface SharedProps {
+  folderName: '';
+  owner: {
+    id: number;
+    name: string;
+    profileImageSource: string;
+  };
+  folderLinks: LinkTypes[];
+}
 
-  useEffect(() => {
-    const fetchSampleFolder = async () => {
-      const { name, owner, links } = await getSampleFolder();
-
-      setFolderName(name);
-      setOwner(owner);
-      setFolderLists(links);
-    };
-
-    fetchSampleFolder();
-  }, []);
-
+export default function Shared({ folderName, owner, folderLinks }: SharedProps) {
   return (
     <OwnerContext.Provider value={{ owner, folderName }}>
       <LinkListContext.Provider value={folderLinks}>
