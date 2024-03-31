@@ -11,7 +11,7 @@ export const updateBtnsId = {
   share: uuidv4(),
   change: uuidv4(),
   delete: uuidv4(),
-};
+} as const;
 
 export const modalTypes: {
   [key: string]: string;
@@ -22,7 +22,7 @@ export const modalTypes: {
   deleteFolder: uuidv4(),
   deleteLink: uuidv4(),
   add: uuidv4(),
-};
+} as const;
 
 export const exitBtnId = uuidv4();
 export const modalBackground = uuidv4();
