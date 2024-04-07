@@ -1,0 +1,16 @@
+.item {
+  position: relative;
+  display: flex;
+  font-size: 1.6rem;
+  line-height: 1.8rem;
+}
+
+.icon {
+  align-self: flex-end;
+  width: 2rem;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+}
