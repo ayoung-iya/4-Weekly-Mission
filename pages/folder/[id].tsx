@@ -13,7 +13,7 @@ export const getServerSideProps: GetServerSideProps = async context => {
 
   try {
     const folderList = await getUserFolders();
-    const links = await getUserLinks(id);
+    const links = await getUserLinks(id as string);
 
     return { props: { folderList, links } };
   } catch {
