@@ -11,7 +11,7 @@ const InputGroup = ({ info }: any) => {
   const [showText, setShowText] = useState(() => (info.id !== 'email' ? false : true));
   const type = info.id === 'email' ? info.type : showText ? 'text' : info.type;
   const eyeClassName = `${styles.iconEye} ${showText ? styles.on : ''}`;
-  const inputClassName = `${styles.input} ${errors[info.id] ? styles.error : ''}`;
+  const inputClassName = `${styles.input} ${errors[info.id]?.message ? styles.error : ''}`;
 
   return (
     <>
