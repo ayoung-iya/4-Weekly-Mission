@@ -20,9 +20,9 @@ export default function SignIn() {
         </Link>
         <p className={styles.question}>
           회원이 아니신가요?
-          <a href="signup" className={styles.link}>
+          <Link href="signup" className={styles.link}>
             회원 가입하기
-          </a>
+          </Link>
         </p>
       </header>
 
