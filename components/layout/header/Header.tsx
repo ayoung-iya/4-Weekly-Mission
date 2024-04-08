@@ -38,7 +38,7 @@ function Header() {
               <span className={styles.userEmail}>{user.email}</span>
             </>
           ) : (
-            <Link className={styles.btn} href="/signin.html">
+            <Link className={styles.btn} href="/signin">
               로그인
             </Link>
           )}
