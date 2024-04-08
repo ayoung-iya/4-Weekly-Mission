@@ -1,6 +1,6 @@
 import { PropsWithChildren, createContext, useEffect, useState } from 'react';
 import { getSampleFolder } from '@/api/api';
-import { LinkTypes } from '@/types/types';
+import type { LinkTypes } from '@/types/types';
 
 interface SampleFolderContext {
   folderName: string;

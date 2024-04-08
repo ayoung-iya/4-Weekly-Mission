@@ -1,4 +1,4 @@
-import { FooterItem } from '@/types/types';
+import type { FooterItem } from '@/types/types';
 import styles from './IconWithLink.module.css';
 import Link from 'next/link';
 import Image from 'next/image';

@@ -2,7 +2,7 @@ import Link from 'next/link';
 import styles from './Header.module.css';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { User } from '@/types/types';
+import type { User } from '@/types/types';
 import { getUser } from '@/api/api';
 import Image from 'next/image';
 

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import LinkCard from './LinkCard';
 import { useContext, useEffect, useState } from 'react';
-import { LinkTypes } from '@/types/types';
+import type { LinkTypes } from '@/types/types';
 import { LinkListContext } from '@/context/createContext.';
 
 const List = styled.ul`

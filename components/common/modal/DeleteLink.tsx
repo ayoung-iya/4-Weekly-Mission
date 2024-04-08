@@ -1,4 +1,4 @@
-import { Modal } from '@/types/types';
+import type { Modal } from '@/types/types';
 import Frame from './frame/Frame';
 import SubmitButton from './submitButton/SubmitButton';
 import Title from './title/Title';

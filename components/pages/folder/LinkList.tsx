@@ -1,9 +1,9 @@
 import styled from 'styled-components';
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import UpdateBtnList from './UpdateBtnList';
-import { Folder, LinkTypes } from '@/types/types';
+import type { Folder } from '@/types/types';
 import { totalFolderId, totalFolderName } from '@/util/constants';
-import { FoldersContext, LinkListContext } from '@/context/createContext.';
+import { FoldersContext } from '@/context/createContext.';
 import FolderList from '@/components/common/FolderList';
 import { useRouter } from 'next/router';
 

@@ -6,7 +6,7 @@ import styles from './Share.module.css';
 import ShareBtn from './shareBtn/ShareBtn';
 import { sampleUrl } from '@/util/constants';
 import { useKaKaoScript } from '@/hooks/kakao';
-import { Modal } from '@/types/types';
+import type { Modal } from '@/types/types';
 
 interface ShareProps {
   currentId: string;
