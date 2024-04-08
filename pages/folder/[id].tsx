@@ -2,24 +2,26 @@ import { getUserFolders, getUserLinks } from '@/api/api';
 import AddLinkArea from '@/components/pages/folder/AddLinkArea';
 import FolderSection from '@/components/pages/folder/FolderSection';
 import { FoldersContext, LinkListContext } from '@/context/createContext.';
-import { Folder, LinkTypes } from '@/types/types';
+import type { Folder, LinkTypes } from '@/types/types';
+import { GetServerSideProps } from 'next';
 
-//? context의 타입은 뭔가요?
-export async function getServerSideProps(context: any) {
-  const folderId = context.params['id'];
-  let folderList, links;
+export const getServerSideProps: GetServerSideProps = async context => {
+  // TODO: id는 string, string[], undefined가 될 수 있다.
+  const { id } = context.query;
+
+  if (!id) return { notFound: true };
 
   try {
-    folderList = await getUserFolders();
-    links = await getUserLinks(folderId);
+    const folderList = await getUserFolders();
+    const links = await getUserLinks(id);
+
+    return { props: { folderList, links } };
   } catch {
     return {
       notFound: true,
     };
   }
-
-  return { props: { folderList, links } };
-}
+};
 
 const FolderPage = ({ folderList, links }: { folderList: Folder[]; links: LinkTypes[] }) => {
   return (
