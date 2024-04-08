@@ -2,22 +2,20 @@ import { getUserFolders, getUserLinks } from '@/api/api';
 import AddLinkArea from '@/components/pages/folder/AddLinkArea';
 import FolderSection from '@/components/pages/folder/FolderSection';
 import { FoldersContext, LinkListContext } from '@/context/createContext.';
-import { Folder, LinkTypes } from '@/types/types';
+import type { Folder, LinkTypes } from '@/types/types';
 import { totalFolderId } from '@/util/constants';
 
 export async function getServerSideProps() {
-  let folderList, links;
-
   try {
-    folderList = await getUserFolders();
-    links = await getUserLinks(totalFolderId);
+    const folderList = await getUserFolders();
+    const links = await getUserLinks(totalFolderId);
+
+    return { props: { folderList, links } };
   } catch {
     return {
       notFound: true,
     };
   }
-
-  return { props: { folderList, links } };
 }
 
 const FolderPage = ({ folderList, links }: { folderList: Folder[]; links: LinkTypes[] }) => {
