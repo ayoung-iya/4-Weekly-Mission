@@ -17,7 +17,7 @@ export const INPUT_INFO = {
     id: 'email',
     type: 'email',
     label: '이메일',
-    placeholder: '이메일를 입력해 주세요',
+    placeholder: '이메일를 입력해 주세요.',
     validation: {
       pattern: {
         value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
@@ -31,7 +31,7 @@ export const INPUT_INFO = {
       id: 'password',
       type: 'password',
       label: '비밀번호',
-      placeholder: '비밀번호를 입력해 주세요',
+      placeholder: '비밀번호를 입력해 주세요.',
       validation: {
         required: ERROR_MESSAGE.password.required,
       },
@@ -40,7 +40,7 @@ export const INPUT_INFO = {
       id: 'password',
       type: 'password',
       label: '비밀번호  ',
-      placeholder: '비밀번호와 일치하는 값을 입력해주세요.',
+      placeholder: '비밀번호를 입력해 주세요.',
       validation: {
         pattern: {
           value: /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,}$/,
@@ -56,8 +56,14 @@ export const INPUT_INFO = {
     label: '비밀번호 확인',
     placeholder: '비밀번호와 일치하는 값을 입력해주세요.',
     validation: {
-      required: ERROR_MESSAGE.password.checkSame,
-      validate: (value: any, formValues: any) => value !== formValues.passwordCheck && ERROR_MESSAGE.password.checkSame,
+      validate: (value: any, formValues: any) => {
+        if (value.length === 0 && formValues.password.length === 0) return ERROR_MESSAGE.password.required;
+        return value !== formValues.password && ERROR_MESSAGE.password.checkSame;
+      },
+      pattern: {
+        value: /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,}$/,
+        message: ERROR_MESSAGE.password.pattern,
+      },
     },
   },
 };
