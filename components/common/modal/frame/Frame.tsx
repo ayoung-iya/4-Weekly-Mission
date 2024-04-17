@@ -1,7 +1,7 @@
 import { MouseEvent, PropsWithChildren, ReactNode } from 'react';
 import styles from './Frame.module.css';
 import { exitBtnId, modalBackground } from '@/util/constants';
-import { Modal } from '@/types/types';
+import type { Modal } from '@/types/types';
 
 interface FrameProps {
   onCloseModal: Modal['closeModal'];

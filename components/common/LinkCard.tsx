@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import LinkImage, { ImageCard } from './LinkImage';
 import LinkInfo, { InfoGroup } from './LinkInfo';
 import Link from 'next/link';
-import { LinkTypes } from '@/types/types';
+import type { LinkTypes } from '@/types/types';
 
 const LinkItem = styled.li`
   width: calc(100% / 3 - 4rem / 3);

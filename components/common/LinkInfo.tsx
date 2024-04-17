@@ -3,7 +3,7 @@ import { format, formatDistanceToNowStrict } from 'date-fns';
 import { useState, MouseEvent } from 'react';
 import { modalTypes } from '../../util/constants';
 import Popover from './Popover';
-import { LinkTypes } from '@/types/types';
+import type { LinkTypes } from '@/types/types';
 
 export const InfoGroup = styled.div`
   display: flex;

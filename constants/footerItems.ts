@@ -1,4 +1,4 @@
-import { FooterItem } from "@/types/types";
+import type { FooterItem } from "@/types/types";
 
 export const SNS_ITEMS: FooterItem[] = [
   {

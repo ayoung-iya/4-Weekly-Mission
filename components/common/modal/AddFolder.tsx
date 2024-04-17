@@ -1,8 +1,8 @@
-import { Modal } from '@/types/types';
 import FolderNameInput from './folderNameInput/folderNameInput';
 import Frame from './frame/Frame';
 import SubmitButton from './submitButton/SubmitButton';
 import Title from './title/Title';
+import type { Modal } from '@/types/types';
 
 interface AddFolderProps {
   onCloseModal: Modal['closeModal'];

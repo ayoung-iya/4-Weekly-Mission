@@ -1,4 +1,4 @@
-import { Modal } from '@/types/types';
+import type { Modal } from '@/types/types';
 import FolderNameInput from './folderNameInput/folderNameInput';
 import Frame from './frame/Frame';
 import SubmitButton from './submitButton/SubmitButton';

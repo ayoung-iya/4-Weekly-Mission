@@ -1,7 +1,7 @@
 import Title from './title/Title';
 import Frame from './frame/Frame';
 import SubmitButton from './submitButton/SubmitButton';
-import { Modal } from '@/types/types';
+import type { Modal } from '@/types/types';
 
 interface DeleteFolder {
   selectedFolderName: string;

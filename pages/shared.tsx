@@ -2,7 +2,7 @@ import UserFolderNameArea from '@/components/pages/shared/UserFolderNameArea';
 import SharedSection from '@/components/pages/shared/SharedSection';
 import { createContext, useEffect, useState } from 'react';
 import { getSampleFolder } from '@/api/api';
-import { LinkTypes } from '@/types/types';
+import type { LinkTypes } from '@/types/types';
 import { LinkListContext } from '@/context/createContext.';
 
 export async function getStaticProps() {
