@@ -1,14 +1,34 @@
+import { postCheckEmail } from '@/api/auth';
 import InputGroup from '@/components/pages/sign/InputGroup';
 import { INPUT_INFO } from '@/constants/sign';
 import styles from '@/styles/sign.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 
 export default function SignIn() {
   const methods = useForm();
+  const [emailCheckFailed, setEmailCheckFailed] = useState(false);
 
-  const onSubmit = (data: any) => {
+  const checkEmailDuplicate = async (email: string) => {
+    try {
+      await postCheckEmail(email);
+      setEmailCheckFailed(false);
+    } catch (error) {
+      methods.setError(INPUT_INFO.email.id, {
+        type: 'duplication',
+        message: (error as Error).message,
+      });
+      setEmailCheckFailed(true);
+    }
+  };
+
+  const onSubmit = async (data: any) => {
+    if (emailCheckFailed) {
+      await checkEmailDuplicate(data.email);
+      return;
+    }
     console.log(data);
   };
 
@@ -28,7 +48,7 @@ export default function SignIn() {
 
       <FormProvider {...methods}>
         <form action="" className={styles.formArea} onSubmit={methods.handleSubmit(onSubmit)}>
-          <InputGroup info={INPUT_INFO.email} />
+          <InputGroup info={INPUT_INFO.email} onBlur={checkEmailDuplicate} />
           <InputGroup info={INPUT_INFO.password.signUp} />
           <InputGroup info={INPUT_INFO.passwordCheck} />
 

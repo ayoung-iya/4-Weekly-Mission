@@ -2,7 +2,7 @@ import { useFormContext } from 'react-hook-form';
 import styles from '@/styles/sign.module.css';
 import { useState } from 'react';
 
-const InputGroup = ({ info }: any) => {
+const InputGroup = ({ info, onBlur }: any) => {
   const {
     register,
     trigger,
@@ -22,7 +22,13 @@ const InputGroup = ({ info }: any) => {
         <input
           type={type}
           id={info.id}
-          {...register(info.id, { ...info.validation, onBlur: async () => await trigger(info.id) })}
+          {...register(info.id, {
+            ...info.validation,
+            onBlur: async e => {
+              await trigger(info.id);
+              errors[info.id]?.message || onBlur && (await onBlur(e.target.value));
+            },
+          })}
           placeholder={info.placeholder}
           className={inputClassName}
         />

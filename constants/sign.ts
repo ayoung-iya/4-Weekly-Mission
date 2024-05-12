@@ -58,7 +58,7 @@ export const INPUT_INFO = {
     validation: {
       validate: (value: any, formValues: any) => {
         if (value.length === 0 && formValues.password.length === 0) return ERROR_MESSAGE.password.required;
-        return value !== formValues.password && ERROR_MESSAGE.password.checkSame;
+        if (value !== formValues.password) return ERROR_MESSAGE.password.checkSame;
       },
       pattern: {
         value: /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,}$/,
