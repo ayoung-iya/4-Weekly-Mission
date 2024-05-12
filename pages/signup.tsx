@@ -1,15 +1,17 @@
-import { postCheckEmail } from '@/api/auth';
+import { postCheckEmail, postSignUp } from '@/api/auth';
 import InputGroup from '@/components/pages/sign/InputGroup';
 import { INPUT_INFO } from '@/constants/sign';
 import styles from '@/styles/sign.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 
 export default function SignIn() {
   const methods = useForm();
   const [emailCheckFailed, setEmailCheckFailed] = useState(false);
+  const router = useRouter();
 
   const checkEmailDuplicate = async (email: string) => {
     try {
@@ -24,12 +26,22 @@ export default function SignIn() {
     }
   };
 
-  const onSubmit = async (data: any) => {
+  const onSubmit = async ({ email, password }: any) => {
     if (emailCheckFailed) {
-      await checkEmailDuplicate(data.email);
+      await checkEmailDuplicate(email);
       return;
     }
-    console.log(data);
+
+    try {
+      const { accessToken, refreshToken } = await postSignUp({ email, password });
+
+      window.localStorage.setItem('accessToken', accessToken);
+      window.localStorage.setItem('refreshToken', refreshToken);
+
+      router.push('/folder');
+    } catch (error) {
+      console.error((error as Error).message);
+    }
   };
 
   return (

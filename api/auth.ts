@@ -31,3 +31,21 @@ export const postCheckEmail = async (email: string) => {
     throw new Error(body.message);
   }
 };
+
+export const postSignUp = async ({ email, password }: { email: string; password: string }) => {
+  const response = await fetch(`${BASE_URL}/auth/sign-up`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ email, password }),
+  });
+
+  if (!response?.ok) {
+    throw new Error('회원가입을 실패했습니다.');
+  }
+
+  const token = await response.json();
+
+  return token;
+};
