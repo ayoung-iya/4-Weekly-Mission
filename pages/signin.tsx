@@ -1,15 +1,34 @@
+import { postSignIn } from '@/api/auth';
 import InputGroup from '@/components/pages/sign/InputGroup';
-import { INPUT_INFO } from '@/constants/sign';
+import { ERROR_MESSAGE, INPUT_INFO } from '@/constants/sign';
 import styles from '@/styles/sign.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { FormProvider, useForm } from 'react-hook-form';
 
 export default function SignIn() {
   const methods = useForm();
+  const router = useRouter();
 
-  const onSubmit = (data: any) => {
-    console.log(data);
+  const onSubmit = async (data: any) => {
+    try {
+      const { accessToken, refreshToken } = await postSignIn(data);
+
+      window.localStorage.setItem('accessToken', accessToken);
+      window.localStorage.setItem('refreshToken', refreshToken);
+
+      router.push('/folder');
+    } catch {
+      methods.setError(INPUT_INFO.email.id, {
+        type: 'failed',
+        message: ERROR_MESSAGE.email.checkRight,
+      });
+      methods.setError(INPUT_INFO.password.signIn.id, {
+        type: 'failed',
+        message: ERROR_MESSAGE.password.checkRight,
+      });
+    }
   };
 
   return (

@@ -1,10 +1,9 @@
 import { USER_ID, totalFolderId } from '@/util/constants';
 import type { Folder, FolderAPI, LinkTypes, LinkAPITypes, User } from '@/types/types';
-
-const BASE_URL = 'https://bootcamp-api.codeit.kr/api';
+import { BASE_URL_LEGACY } from '@/util/apiConstants';
 
 async function getAPI(query: string) {
-  const response = await fetch(`${BASE_URL}/${query}`);
+  const response = await fetch(`${BASE_URL_LEGACY}/${query}`);
 
   if (!response?.ok) {
     throw new Error('데이터를 불러오는데 실패했습니다.');
