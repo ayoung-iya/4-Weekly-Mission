@@ -1,6 +1,7 @@
 import { postSignIn } from '@/api/auth';
 import InputGroup from '@/components/pages/sign/InputGroup';
 import { ERROR_MESSAGE, INPUT_INFO } from '@/constants/sign';
+import { useAuth } from '@/hooks/useAuth';
 import styles from '@/styles/sign.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -10,14 +11,11 @@ import { FormProvider, useForm } from 'react-hook-form';
 export default function SignIn() {
   const methods = useForm();
   const router = useRouter();
+  const { signIn } = useAuth();
 
   const onSubmit = async (data: any) => {
     try {
-      const { accessToken, refreshToken } = await postSignIn(data);
-
-      window.localStorage.setItem('accessToken', accessToken);
-      window.localStorage.setItem('refreshToken', refreshToken);
-
+      signIn(data);
       router.push('/folder');
     } catch {
       methods.setError(INPUT_INFO.email.id, {

@@ -1,6 +1,7 @@
 import { postCheckEmail, postSignUp } from '@/api/auth';
 import InputGroup from '@/components/pages/sign/InputGroup';
 import { INPUT_INFO } from '@/constants/sign';
+import { useAuth } from '@/hooks/useAuth';
 import styles from '@/styles/sign.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -9,6 +10,7 @@ import { useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 
 export default function SignIn() {
+  const { signUp } = useAuth();
   const methods = useForm();
   const [emailCheckFailed, setEmailCheckFailed] = useState(false);
   const router = useRouter();
@@ -33,10 +35,7 @@ export default function SignIn() {
     }
 
     try {
-      const { accessToken, refreshToken } = await postSignUp({ email, password });
-
-      window.localStorage.setItem('accessToken', accessToken);
-      window.localStorage.setItem('refreshToken', refreshToken);
+      signUp({ email, password });
 
       router.push('/folder');
     } catch (error) {

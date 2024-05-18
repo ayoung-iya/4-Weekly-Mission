@@ -12,6 +12,12 @@ const nextConfig = {
         port: '',
         pathname: '/badges/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'avatars.githubusercontent.com',
+        port: '',
+        pathname: '/u/**',
+      },
     ],
   },
 };

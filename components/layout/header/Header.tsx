@@ -1,29 +1,14 @@
 import Link from 'next/link';
 import styles from './Header.module.css';
-import { useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { useRouter } from 'next/router';
-import type { User } from '@/types/types';
-import { getUser } from '@/api/api';
 import Image from 'next/image';
+import { authContext } from '@/context/authProvider';
 
 function Header() {
-  const [user, setUser] = useState<User | null>(null);
+  const { user } = useContext(authContext);
   const { pathname } = useRouter();
   const headerPosition = pathname === '/folder' ? styles.static : '';
-
-  useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const user = await getUser();
-        setUser(user);
-      } catch (err) {
-        const error = err as Error;
-        console.error(error.message);
-      }
-    };
-
-    fetchUser();
-  }, []);
 
   return (
     <header className={`${styles.headerArea} ${headerPosition}`}>

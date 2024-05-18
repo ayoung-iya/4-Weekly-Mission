@@ -49,3 +49,21 @@ export const postSignUp = async ({ email, password }: { email: string; password:
 
   return token;
 };
+
+export const getUser = async () => {
+  const token = window.localStorage.getItem('accessToken');
+
+  const response = await fetch(`${BASE_URL}/users`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  const body = await response.json();
+
+  if (!response?.ok) {
+    throw new Error(body.message);
+  }
+
+  return {...body[0], imageSource: body[0]['image_source']};
+};
